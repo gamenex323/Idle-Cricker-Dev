@@ -176,9 +176,10 @@ public class GameManager : MonoBehaviour
         {
             Directory.CreateDirectory(gameFilePath);
         }
-
+        SubmitScore();
         SaveDataFile(string.Format(gameFileName, "0"), GameState.ToJsonString());
         SaveDataFile(string.Format(gameFileName, "1"), LevelData.ToJsonString());
+
     }
 
     private void SaveDataFile(string fileName, string dataFile)
@@ -282,5 +283,10 @@ public class GameManager : MonoBehaviour
         }
 
         return icon;
+    }
+    public void SubmitScore()
+    {
+        Debug.Log("Level Balance " + LevelData.Balance);
+        PlayFabLoginManager.Instance.SubmitScore(LevelData.Balance);
     }
 }

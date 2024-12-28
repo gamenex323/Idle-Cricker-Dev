@@ -751,4 +751,20 @@ public class MainUIController : MonoBehaviour
             }
         }
     }
+
+    [Header("LeaderBoard")]    
+    [Space(3)]
+
+    [SerializeField] public GameObject ScoreCardPrefab;
+    [SerializeField] public Transform Content;
+    [SerializeField] public List<GameObject> LeaderboardCards = new List<GameObject>();
+    public void DeleteLeaderBoard()
+    {
+        for (int i = 0; i < LeaderboardCards.Count; i++)
+        {
+            Destroy(LeaderboardCards[i]);
+        }
+        // Leaderboard list....
+        LeaderboardCards = new List<GameObject>();
+    }
 }
